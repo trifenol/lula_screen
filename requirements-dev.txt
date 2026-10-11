@@ -1,0 +1,4 @@
+# Para desenvolver: testes e lint
+-r requirements.txt
+pytest>=8
+ruff>=0.5

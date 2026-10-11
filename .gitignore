@@ -1,0 +1,27 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Modelo de mãos do MediaPipe: baixado automaticamente na primeira execução
+models/
+
+# Logo e vídeos NÃO são versionados (direitos de terceiros): veja assets/README.md
+assets/*
+!assets/README.md
+Lula_2026_logo.*
+*.mp4
+*.mov
+*.webm
+
+# Saídas de teste
+saida*.png
+
+# Editor / sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,4 @@
+# Opcional: envia o vídeo para uma câmera virtual (--virtual-cam).
+# Precisa do OBS Studio instalado (veja o README). Atenção: o pyvirtualcam é GPL-2.0.
+-r requirements.txt
+pyvirtualcam>=0.11
