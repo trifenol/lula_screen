@@ -373,7 +373,13 @@ def open_source(args):
     api = cv2.CAP_DSHOW if sys.platform == "win32" else cv2.CAP_ANY
     cap = cv2.VideoCapture(index, api)
     if not cap.isOpened():
-        sys.exit(f"Não consegui abrir a câmera {index}. Tente outro número com --camera.")
+        sys.exit(
+            f"Não consegui abrir a câmera {index}. Causas mais comuns:\n"
+            "  - outro programa está usando a webcam (Zoom, Teams, Meet no navegador, OBS...). "
+            "Feche-o ou, na chamada, troque a câmera para 'OBS Virtual Camera' e rode de novo;\n"
+            "  - o número da câmera está errado: tente --camera 1, --camera 2...;\n"
+            "  - o sistema bloqueou o acesso (no Windows: Configurações > Privacidade > Câmera)."
+        )
     # MJPG + resolução baixa: muitas webcams só chegam a 30 fps assim (a C922 faz 10 fps em 720p)
     cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, args.width)

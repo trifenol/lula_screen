@@ -145,7 +145,7 @@ Medido no Windows 11, com uma C922 em 640x360:
 
 ## 12. Testes
 
-`pytest` roda 66 testes em poucos segundos, sem câmera nem o arquivo do modelo:
+`pytest` roda 67 testes em poucos segundos, sem câmera nem o arquivo do modelo:
 
 - `tests/test_gesture.py`: a regra do "L" com mãos sintéticas (rotação, escala, espelhamento, gestos que **não** são "L").
 - `tests/test_placement.py`: lado da logo, limites do quadro, zoom, calibração e a base acima do polegar.

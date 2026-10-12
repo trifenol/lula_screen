@@ -75,3 +75,11 @@ def test_run_image_refuses_to_overwrite_the_input_photo(tmp_path):
     with pytest.raises(SystemExit):
         f.run_image(args)
     assert photo.read_bytes() == b"foto original"
+
+
+def test_open_source_explains_a_camera_that_cannot_be_opened():
+    args = argparse.Namespace(video=None, camera=99, width=640, height=360)
+    with pytest.raises(SystemExit) as exc:
+        f.open_source(args)
+    message = str(exc.value)
+    assert "99" in message and "outro programa" in message and "OBS Virtual Camera" in message

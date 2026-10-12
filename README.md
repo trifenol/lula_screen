@@ -91,7 +91,9 @@ O programa pode enviar o vídeo para uma câmera virtual, que o Zoom, o Meet e o
    ```bash
    python faz_o_l.py --virtual-cam --no-mirror
    ```
-4. No app de vídeo, escolha **OBS Virtual Camera** como câmera. O programa precisa estar rodando antes de você abrir ou trocar a câmera.
+4. No app de vídeo, escolha **OBS Virtual Camera** como câmera.
+
+> **Atenção à ordem se a chamada já estiver aberta.** O app que está usando a webcam real a mantém ocupada, e o programa não consegue abri-la (`Não consegui abrir a câmera 0`). Primeiro troque a câmera do app para **OBS Virtual Camera**, o que libera a webcam, e só depois rode o programa. Veja [Solução de problemas](#não-consegui-abrir-a-câmera-0).
 
 Use `--no-mirror` para quem está na chamada ver você como os outros veem (sem o efeito de espelho de selfie).
 
@@ -144,6 +146,18 @@ As constantes ficam no topo de [faz_o_l.py](faz_o_l.py):
 - Dobre bem os outros três dedos.
 - Melhore a luz e afaste a mão da câmera (mãos muito pequenas ou muito cortadas pela borda da imagem não são detectadas).
 - Aperte `d` e veja as métricas: `idx` (indicador), `oth` (outros dedos), `thb` (polegar) e `ang` (ângulo). Compare com os limites e ajuste as constantes.
+
+### `Não consegui abrir a câmera 0`
+
+Quase sempre é outro programa usando a webcam. Uma webcam USB só atende **um programa por vez**, então se o Zoom, o Teams, o Meet no navegador ou o OBS estiverem com ela, o `faz_o_l.py` não consegue abri-la.
+
+Para usar numa videochamada, a ordem certa é:
+
+1. No app da chamada, troque a câmera para **OBS Virtual Camera**. Isso libera a webcam real.
+2. Rode `python faz_o_l.py --virtual-cam --no-mirror`.
+3. Faça o "L". A imagem com a logo aparece na chamada.
+
+Se não for isso, confira o número da câmera (`--camera 1`, `--camera 2`...) e a permissão do sistema (no Windows: Configurações → Privacidade → Câmera). No Windows, a tela *Configurações → Privacidade → Câmera* mostra qual aplicativo usou a câmera por último.
 
 ### Abre a câmera errada
 
